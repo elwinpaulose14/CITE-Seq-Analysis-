@@ -1,21 +1,25 @@
 # CITE-Seq-Analysis
+
+## Project Structure
+
+```text
 r_analysis/
-├── data/                                   # Input data files
-│   ├── CITE-Seq-Lane3_Seurat.rds           # Seurat object with RNA + ADT
-│   └── CITE-Seq-Lane3_Sample_Tag_Calls.csv # Sample metadata
+├── data/
+│   ├── CITE-Seq-Lane3_Seurat.rds
+│   └── CITE-Seq-Lane3_Sample_Tag_Calls.csv
 │
-├── scripts/                                 # Analysis scripts
-│   ├── helper_functions.R                  # Utility functions
-│   ├── 01_data_loading.R                   # Data import
-│   ├── 02_quality_control.R                # QC filtering
-│   ├── 03_multimodal_integration.R         # RNA + ADT WNN
-│   ├── 04_reference_mapping.R              # BoneMarrowMap projection
-│   ├── 05_immature_t_identification.R      # Gene signature classification
-│   └── 06_clustering_annotation.R          # Developmental stage annotation
+├── scripts/
+│   ├── helper_functions.R
+│   ├── 01_data_loading.R
+│   ├── 02_quality_control.R
+│   ├── 03_multimodal_integration.R
+│   ├── 04_reference_mapping.R
+│   ├── 05_immature_t_identification.R
+│   └── 06_clustering_annotation.R
 │
-├── main_pipeline.R                         
+├── main_pipeline.R
 │
-├── results/                                # Output files (.rds, .csv)
+├── results/
 │   ├── 01_data_loaded.rds
 │   ├── 02_qc_filtered.rds
 │   ├── 03_wnn_integrated.rds
@@ -25,10 +29,10 @@ r_analysis/
 │   ├── 06_final_annotations.csv
 │   └── session_info.txt
 │
-├── figures/                                
-│   ├── 01_qc_before_filtering.png
-│   ├── 02_qc_after_filtering.png
-│   ├── 03_rna_elbow_plot.png
-│   ├── 15_immature_t_clusters.png
-│   ├── 17_developmental_stages_annotated.png
-│   └── ... (18 figures total)
+└── figures/
+    ├── 01_qc_before_filtering.png
+    ├── 02_qc_after_filtering.png
+    ├── 03_rna_elbow_plot.png
+    ├── 15_immature_t_clusters.png
+    └── 17_developmental_stages_annotated.png
+```
