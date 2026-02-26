@@ -1,6 +1,4 @@
  Multimodal Integration (RNA + ADT)
-source("/app/r_analysis/scripts/helper_functions.R")
-
 
 # Load filtered data
 allcombine <- readRDS("02_qc_filtered.rds")
