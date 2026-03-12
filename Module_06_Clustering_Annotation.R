@@ -9,32 +9,13 @@ print(table(query$Immature_T_like))
 
 # 6.1: Subset Immature T-like Cells
 
-print_step_header("Subsetting Immature T-like Cells")
-
 cat("Subsetting to immature T-like populations...\n")
 immT <- subset(query, subset = Immature_T_like != "Other")
 
 cat("Immature T-like cells:", ncol(immT), "\n")
 
-if (ncol(immT) < 50) {
-  cat("\nWARNING: Insufficient immature T-like cells for clustering (<50)\n")
-  cat("Consider adjusting classification thresholds or analyzing full dataset\n")
-  saveRDS(immT, file = "/app/r_analysis/results/06_immature_t_subset.rds")
-  quit(save = "no", status = 0)
-}
-
-# Remove old reductions to force recalculation
-cat("\nRemoving old dimensional reductions...\n")
-if ("umap_projected" %in% Reductions(immT)) immT@reductions$umap_projected <- NULL
-if ("pca_projected" %in% Reductions(immT)) immT@reductions$pca_projected <- NULL
-if ("harmony_projected" %in% Reductions(immT)) immT@reductions$harmony_projected <- NULL
-if ("umap" %in% Reductions(immT)) immT@reductions$umap <- NULL
-if ("pca" %in% Reductions(immT)) immT@reductions$pca <- NULL
-
 
 # 6.2: Re-process for High-Resolution Clustering
-
-print_step_header("Re-processing RNA Data")
 
 DefaultAssay(immT) <- "RNA"
 
@@ -63,14 +44,11 @@ cat("  Elbow plot suggests using 15 PCs\n")
 
 # 6.3: Graph-Based Clustering
 
-print_step_header("Graph-Based Clustering")
-
 cat("Building nearest neighbor graph (dims 1:15)...\n")
 immT <- FindNeighbors(immT, dims = 1:15)
 
 cat("Finding clusters (resolution=1.1)...\n")
 # Resolution justification:
-
 immT <- FindClusters(immT, resolution = 1.1)
 
 cat("\nClusters identified:\n")
@@ -78,8 +56,6 @@ print(table(immT$seurat_clusters))
 
 
 # 6.4: UMAP Visualization
-
-print_step_header("UMAP Visualization")
 
 cat("Running UMAP (dims 1:15)...\n")
 immT <- RunUMAP(immT, dims = 1:15, reduction.name = "umap_clean")
@@ -99,9 +75,7 @@ ggsave("15_immature_t_clusters.png",
        p_clusters, width = 9, height = 7, dpi = 300)
 
 # 6.5: Marker Gene Expression Analysis
-print_step_header("Marker Gene Expression")
 
-# Define stage-specific markers
 stage_markers <- c(
   "TCF7",    # Early T-cell progenitor
   "BCL11B",  # T-lineage commitment
@@ -156,7 +130,6 @@ if (length(available_markers) > 0) {
 
 # 6.6: Developmental Stage Annotation
 
-print_step_header("Developmental Stage Annotation")
 
 cat("\nAnnotating clusters based on marker expression...\n\n")
 
@@ -214,8 +187,6 @@ ggsave("17_developmental_stages_annotated.png",
 
 # 6.7: Protein (ADT) Expression Validation
 
-print_step_header("ADT Validation")
-
 if ("ADT" %in% Assays(immT)) {
   DefaultAssay(immT) <- "ADT"
   
@@ -257,8 +228,6 @@ if ("ADT" %in% Assays(immT)) {
 
 
 # 6.8: Export Results
-
-print_step_header("Exporting Results")
 
 cat("\nExporting cell annotations...\n")
 
