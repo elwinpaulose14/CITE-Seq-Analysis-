@@ -1,3 +1,4 @@
+start_time <- Sys.time()
 library(targets)
 library(tarchetypes)
 source("Module_01_data_loaded.R")
