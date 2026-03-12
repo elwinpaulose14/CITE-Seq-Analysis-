@@ -1,15 +1,11 @@
 ##Subsetting of Tcell precursors and T/M MPAL primed cells
 
-print_step_header("IDENTIFICATION OF IMMATURE T-LIKE CELLS", 5)
-
 # Load reference-mapped data (or non-reference data if mapping was skipped)
-if (file.exists("04_reference_mapped.rds")) {
+
   query <- readRDS("04_reference_mapped.rds")
-} else if (file.exists("/app/r_analysis/results/04_query_no_reference.rds")) {
-  query <- readRDS("/app/r_analysis/results/04_query_no_reference.rds")
-} else {
-  query <- readRDS("/app/r_analysis/results/03_wnn_integrated.rds")
-}
+
+  query <- readRDS("03_wnn_integrated.rds")
+
 
 cat("Working with", ncol(query), "cells\n")
 
@@ -66,8 +62,8 @@ cat(paste(Myeloid_prog_genes, collapse = ", "), "\n")
 # 5.2: Calculate Module Scores
 
 
-DefaultAssay(query_seurat) <- "RNA"
-query_seurat <- NormalizeData(query_seurat)
+DefaultAssay(query) <- "RNA"
+query_seurat <- NormalizeData(query)
 cat("\nCalculating T-cell progenitor score...\n")
 query_seurat <- AddModuleScore(
   query_seurat,
@@ -139,9 +135,9 @@ query_seurat$Immature_T_like[immature_t_cells] <- "Immature_T_like"
 cat("Cells classified as Immature_T_like:", sum(immature_t_cells), "\n")
 
 cat("\n--- Classification Criterion 2: Immature T-MPAL-like ---\n")
-cat("Criteria: T_prog > 0.4 AND Stem_prog > 0.2 AND Myeloid_prog > 0\n")
+cat("Criteria: T_prog > 0.4 AND Stem_prog > 0.2 AND Myeloid_prog > 0.1\n")
 
-mpal_like_cells <- query_seurat$T_prog1 > 0.4 & query_seurat$Stem_prog1 > 0.2 & query_seurat$Myeloid_prog1 > 0
+mpal_like_cells <- query_seurat$T_prog1 > 0.4 & query_seurat$Stem_prog1 > 0.2 & query_seurat$Myeloid_prog1 > 0.1
 query_seurat$Immature_T_like[mpal_like_cells] <- "Immature_T_MPAL_like"
 
 cat("Cells classified as Immature_T_MPAL_like:", sum(mpal_like_cells), "\n")
@@ -167,7 +163,7 @@ if (!is.null(umap_reduction)) {
   cat("\nGenerating classification UMAP...\n")
   
   p_classification <- DimPlot(
-    query,
+    query_seurat,
     reduction = umap_reduction,
     group.by = "Immature_T_like",
     cols = c(
@@ -180,14 +176,14 @@ if (!is.null(umap_reduction)) {
     ggtitle("Immature T-like Cell Classification") +
     theme_minimal()
   
-  ggsave("/app/r_analysis/figures/12_immature_t_classification.png",
+  ggsave("12_immature_t_classification.png",
          p_classification, width = 10, height = 7, dpi = 300)
   
   # Plot module scores on UMAP
   cat("\nGenerating module score feature plots...\n")
   
   p_modules <- FeaturePlot(
-    query,
+    query_seurat,
     reduction = umap_reduction,
     features = c("T_prog1", "Stem_prog1", "Myeloid_prog1"),
     ncol = 3,
@@ -225,3 +221,4 @@ saveRDS(query_seurat, file = "05_immature_t_classified.rds")
 
 cat("\n✓ Step 5 completed successfully\n")
 cat("\nNext: Cluster and annotate immature T-like cells\n")
+
