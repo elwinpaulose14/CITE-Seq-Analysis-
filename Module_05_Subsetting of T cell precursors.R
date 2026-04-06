@@ -2,7 +2,7 @@
 
 # Load reference-mapped data (or non-reference data if mapping was skipped)
 
-  query <- readRDS("04_reference_mapped.rds")
+  query <- readRDS("04_reference_mapped_clean.rds")
 
   query <- readRDS("03_wnn_integrated.rds")
 
