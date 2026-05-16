@@ -1,0 +1,321 @@
+{
+  "R": {
+    "Version": "4.3.3",
+    "Repositories": [
+      {
+        "Name": "CRAN",
+        "URL": "https://packagemanager.posit.co/cran/__linux__/bookworm/latest"
+      },
+      {
+        "Name": "Bioconductor",
+        "URL": "https://bioconductor.org/packages/3.18/bioc"
+      }
+    ]
+  },
+  "Bioconductor": {
+    "Version": "3.18"
+  },
+  "Packages": {
+
+    "AUCell": {
+      "Package": "AUCell",
+      "Version": "1.24.0",
+      "Source": "Bioconductor",
+      "Repository": "Bioconductor",
+      "Requirements": ["BiocGenerics", "BiocParallel", "GSEABase", "IRanges",
+                       "Matrix", "R.utils", "S4Vectors", "SummarizedExperiment",
+                       "data.table", "graphics", "grDevices", "methods",
+                       "mixtools", "stats", "utils"]
+    },
+
+    "BiocGenerics": {
+      "Package": "BiocGenerics",
+      "Version": "0.48.1",
+      "Source": "Bioconductor",
+      "Repository": "Bioconductor",
+      "Requirements": ["graphics", "methods", "stats", "utils"]
+    },
+
+    "BiocManager": {
+      "Package": "BiocManager",
+      "Version": "1.30.23",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": ["utils"]
+    },
+
+    "BiocParallel": {
+      "Package": "BiocParallel",
+      "Version": "1.36.0",
+      "Source": "Bioconductor",
+      "Repository": "Bioconductor",
+      "Requirements": ["BH", "R", "codetools", "futile.logger",
+                       "methods", "parallel", "snow", "stats", "utils"]
+    },
+
+    "BoneMarrowMap": {
+      "Package": "BoneMarrowMap",
+      "Version": "0.1.0",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "BoneMarrowMap",
+      "RemoteUsername": "immunogenomics",
+      "RemoteRef": "main",
+      "RemoteSha": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2",
+      "Requirements": ["Seurat", "symphony", "Matrix", "dplyr", "ggplot2"]
+    },
+
+    "FNN": {
+      "Package": "FNN",
+      "Version": "1.1.4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": ["R"]
+    },
+
+    "GSEABase": {
+      "Package": "GSEABase",
+      "Version": "1.64.0",
+      "Source": "Bioconductor",
+      "Repository": "Bioconductor",
+      "Requirements": ["AnnotationDbi", "BiocGenerics", "Biobase",
+                       "IRanges", "R", "RCurl", "XML", "annotate",
+                       "graph", "methods", "utils"]
+    },
+
+    "Matrix": {
+      "Package": "Matrix",
+      "Version": "1.6-5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": ["R", "lattice", "methods"]
+    },
+
+    "Rcpp": {
+      "Package": "Rcpp",
+      "Version": "1.0.12",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": ["methods", "utils"]
+    },
+
+    "RcppArmadillo": {
+      "Package": "RcppArmadillo",
+      "Version": "0.12.8.4.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": ["R", "Rcpp", "methods", "stats", "utils"]
+    },
+
+    "S4Vectors": {
+      "Package": "S4Vectors",
+      "Version": "0.40.2",
+      "Source": "Bioconductor",
+      "Repository": "Bioconductor",
+      "Requirements": ["BiocGenerics", "R", "methods", "stats", "stats4",
+                       "utils"]
+    },
+
+    "Seurat": {
+      "Package": "Seurat",
+      "Version": "5.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": ["Rcpp", "RcppArmadillo", "Matrix", "SeuratObject",
+                       "ggplot2", "patchwork", "ggrepel", "ggridges",
+                       "future", "future.apply", "irlba", "uwot",
+                       "RcppAnnoy", "RANN", "fitdistrplus", "spatstat.explore",
+                       "spatstat.geom", "pbapply", "scattermore",
+                       "cowplot", "RColorBrewer", "ica", "plotly",
+                       "leiden", "reticulate", "sctransform",
+                       "data.table", "dplyr", "httr", "igraph",
+                       "jsonlite", "lmtest", "MASS", "png", "R",
+                       "ROCR", "rlang", "scales", "methods", "utils",
+                       "stats", "grDevices", "graphics"]
+    },
+
+    "SeuratDisk": {
+      "Package": "SeuratDisk",
+      "Version": "0.0.0.9021",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "seurat-disk",
+      "RemoteUsername": "mojaveazure",
+      "RemoteRef": "master",
+      "RemoteSha": "4c37539c76f75e9fe3e03b0d1ca58ab84fef1da2",
+      "Requirements": ["R", "Seurat", "SeuratObject", "hdf5r",
+                       "cli", "crayon", "Matrix", "methods", "rlang",
+                       "stringi", "tools", "utils", "withr"]
+    },
+
+    "SeuratObject": {
+      "Package": "SeuratObject",
+      "Version": "5.0.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": ["Matrix", "Rcpp", "RcppEigen", "R",
+                       "future", "future.apply", "generics",
+                       "lifecycle", "methods", "progressr",
+                       "rlang", "sp", "stats", "tools", "utils"]
+    },
+
+    "SummarizedExperiment": {
+      "Package": "SummarizedExperiment",
+      "Version": "1.32.0",
+      "Source": "Bioconductor",
+      "Repository": "Bioconductor",
+      "Requirements": ["BiocGenerics", "Biobase", "DelayedArray",
+                       "GenomicRanges", "IRanges", "MatrixGenerics",
+                       "R", "S4Arrays", "S4Vectors", "methods",
+                       "stats", "tools", "utils"]
+    },
+
+    "dplyr": {
+      "Package": "dplyr",
+      "Version": "1.1.4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": ["R", "cli", "generics", "glue", "lifecycle",
+                       "magrittr", "methods", "pillar", "R6",
+                       "rlang", "tibble", "tidyselect", "utils",
+                       "vctrs"]
+    },
+
+    "future": {
+      "Package": "future",
+      "Version": "1.33.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": ["R", "digest", "globals", "listenv",
+                       "parallelly", "utils"]
+    },
+
+    "future.apply": {
+      "Package": "future.apply",
+      "Version": "1.11.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": ["R", "future", "globals", "utils"]
+    },
+
+    "ggplot2": {
+      "Package": "ggplot2",
+      "Version": "3.5.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": ["MASS", "R", "cli", "glue", "grDevices",
+                       "grid", "gtable", "isoband", "lifecycle",
+                       "mgcv", "rlang", "scales", "stats",
+                       "tibble", "vctrs", "withr"]
+    },
+
+    "ggrepel": {
+      "Package": "ggrepel",
+      "Version": "0.9.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": ["R", "Rcpp", "ggplot2", "grid",
+                       "rlang", "scales", "withr"]
+    },
+
+    "irlba": {
+      "Package": "irlba",
+      "Version": "2.3.5.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": ["Matrix", "R", "methods", "stats"]
+    },
+
+    "patchwork": {
+      "Package": "patchwork",
+      "Version": "1.2.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": ["R", "ggplot2", "grDevices", "graphics",
+                       "grid", "gtable", "rlang", "stats",
+                       "utils"]
+    },
+
+    "renv": {
+      "Package": "renv",
+      "Version": "1.0.7",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": ["utils"]
+    },
+
+    "symphony": {
+      "Package": "symphony",
+      "Version": "0.1.1",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "symphony",
+      "RemoteUsername": "immunogenomics",
+      "RemoteRef": "v0.1.1",
+      "RemoteSha": "9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e",
+      "Requirements": ["R", "Rcpp", "RcppArmadillo", "Matrix",
+                       "dplyr", "ggplot2", "irlba", "magrittr",
+                       "methods", "uwot"]
+    },
+
+    "tarchetypes": {
+      "Package": "tarchetypes",
+      "Version": "0.9.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": ["R", "digest", "dplyr", "fs", "fst", "rlang",
+                       "targets", "tibble", "tidyselect",
+                       "utils", "vctrs", "withr"]
+    },
+
+    "targets": {
+      "Package": "targets",
+      "Version": "1.7.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": ["R", "R6", "base64url", "callr", "cli",
+                       "codetools", "data.table", "digest",
+                       "igraph", "knitr", "parallelly", "rlang",
+                       "tibble", "tidyselect", "tools",
+                       "utils", "vctrs", "yaml"]
+    },
+
+    "tidyr": {
+      "Package": "tidyr",
+      "Version": "1.3.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": ["R", "cli", "dplyr", "glue", "lifecycle",
+                       "magrittr", "purrr", "rlang", "stringr",
+                       "tibble", "tidyselect", "utils", "vctrs"]
+    },
+
+    "tidyverse": {
+      "Package": "tidyverse",
+      "Version": "2.0.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": ["R", "broom", "cli", "conflicted", "dbplyr",
+                       "dplyr", "dtplyr", "forcats", "googledrive",
+                       "googlesheets4", "ggplot2", "haven",
+                       "hms", "httr", "jsonlite", "lubridate",
+                       "magrittr", "modelr", "pillar", "purrr",
+                       "ragg", "readr", "readxl", "reprex",
+                       "rlang", "rstudioapi", "rvest", "stringr",
+                       "tibble", "tidyr", "xml2"]
+    },
+
+    "viridis": {
+      "Package": "viridis",
+      "Version": "0.6.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": ["R", "viridisLite", "ggplot2", "gridExtra",
+                       "grDevices", "methods"]
+    }
+
+  }
+}
