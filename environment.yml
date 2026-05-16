@@ -1,0 +1,77 @@
+name: citeseq-analysis
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+
+dependencies:
+  # ── System & runtime ──────────────────────────────────────────────
+  - r-base=4.3.3
+  - r-essentials=4.3
+  - pandoc>=3.1          # needed for rmarkdown / knitr reports
+  - libxml2              # required by many Bioconductor packages
+  - libcurl              # httr / curl backend
+  - openssl              # secure connections (download / GitHub installs)
+  - libhdf5              # HDF5 backend for SeuratDisk (.h5seurat / .h5ad)
+  - hdf5                 # C library; same requirement
+  - udunits2             # units package dependency (sf, sp)
+  - gfortran             # Fortran compiler for compiled R packages
+  - libblas              # BLAS for matrix operations
+  - liblapack            # LAPACK for PCA / SVD
+  - cairo                # PNG/SVG device for ggsave
+  - fontconfig           # Font rendering for ggplot2
+  - freetype             # Font rendering
+
+  # ── Core CRAN packages ────────────────────────────────────────────
+  - r-seurat=5.1.0
+  - r-seuratobject=5.0.2
+  - r-patchwork=1.2.0
+  - r-ggplot2=3.5.1
+  - r-dplyr=1.1.4
+  - r-tidyr=1.3.1
+  - r-readr=2.1.5
+  - r-tibble=3.2.1
+  - r-stringr=1.5.1
+  - r-purrr=1.0.2
+  - r-forcats=1.0.0
+  - r-ggrepel=0.9.5
+  - r-scales=1.3.0
+  - r-rcolorbrewer=1.1_3
+  - r-viridis=0.6.5
+  - r-matrix=1.6_5
+  - r-rcpp=1.0.12
+  - r-rcpparmadillo=0.12.8.4.0
+  - r-mass=7.3_60
+  - r-irlba=2.3.5.1      # sparse SVD (Seurat PCA backend)
+  - r-fnn=1.1.4           # fast k-nearest neighbours (Module 04 KNN transfer)
+  - r-future=1.33.2       # parallel processing backend for Seurat
+  - r-future.apply=1.11.2
+  - r-renv=1.0.7          # package snapshot / restore
+  - r-targets=1.7.0       # pipeline orchestration (Main_Pipeline_Target.R)
+  - r-tarchetypes=0.9.0   # helper targets
+
+  # ── Bioconductor packages (bioconda channel) ───────────────────────
+  - bioconductor-biocmanager=1.30.23
+  - bioconductor-biocgenerics=0.48.1
+  - bioconductor-s4vectors=0.40.2
+  - bioconductor-iranges=2.36.0
+  - bioconductor-genomicranges=1.54.1
+  - bioconductor-summarizedexperiment=1.32.0
+  - bioconductor-singlecellexperiment=1.24.0
+  - bioconductor-aucell=1.24.0    # AUCell scoring (Module 05)
+  - bioconductor-gseabase=1.64.0  # gene set infrastructure for AUCell
+  - bioconductor-graph=1.80.0
+
+  # ── pip-only packages (no conda build available) ───────────────────
+  - pip
+  - pip:
+    - leidenalg==0.10.2      # Leiden clustering (optional Seurat backend)
+
+# ── GitHub-only R packages ─────────────────────────────────────────
+# These cannot be installed via conda; install after activating environment:
+#
+#   Rscript -e "remotes::install_github('mojaveazure/seurat-disk@v0.0.0.9021')"
+#   Rscript -e "remotes::install_github('immunogenomics/symphony@v0.1.1')"
+#   Rscript -e "remotes::install_github('immunogenomics/BoneMarrowMap')"
+#
+# Exact commit SHAs are pinned in renv.lock for full reproducibility.
