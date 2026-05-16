@@ -158,7 +158,7 @@ r_analysis/
 | `FNN` | ≥ 1.1 | Fast k-nearest neighbor search |
 | `patchwork` | ≥ 1.1 | Plot composition |
 | `ggplot2` | ≥ 3.4 | Visualization |
-| `tidyverse` | ≥ 2.0 | Data manipulation |
+| `tidyverse` | ≥ 2.0 | Data wrangling and transformation |
 | `BiocManager` | ≥ 1.30 | Bioconductor package management |
 | `targets` | ≥ 1.0 | Pipeline orchestration |
 | `tarchetypes` | ≥ 0.7 | Targets helper functions |
