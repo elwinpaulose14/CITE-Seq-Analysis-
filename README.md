@@ -85,7 +85,7 @@ r_analysis/
 │   ├── Module_02_qc_filtered.R
 │   ├── Module_03_wnn_integrated.R
 │   ├── Module_04_reference_mapping.R
-│   ├── Module_05_Subsetting of T cell precursors.R
+│   ├── Module_05_Subsetting of T cell precursor.R
 │   └── Module_06_Clustering_Annotation.R
 │
 ├── Main_Pipeline_Target.R                 # Orchestration via {targets}
