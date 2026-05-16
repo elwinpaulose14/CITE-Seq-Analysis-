@@ -27,68 +27,94 @@ This pipeline performs an end-to-end single-cell multimodal analysis of CITE-seq
 
 ## Workflow
 
-```
+```text
 Raw CITE-seq Data
        │
        ▼
+
 ┌─────────────────────┐
-│  Module 01          │  Load RDS + Sample Tag Metadata
-│  Data Loading       │  Filter: Undetermined / Multiplets
+│  Module 01          │
+│  Data Loading       │
 └────────┬────────────┘
-         │
+         ├─ Load RDS + Sample Tag Metadata
+         └─ Filter: Undetermined / Multiplets
+
          ▼
+
 ┌─────────────────────┐
-│  Module 02          │  Mitochondrial % calculation
-│  Quality Control    │  Dynamic quantile thresholds (1st–99th)
-└────────┬────────────┘  nFeature: 150–2700 | MT: < 45%
-         │
-         ▼
-┌─────────────────────┐
-│  Module 03          │  RNA: NormalizeData → PCA (50 PCs)
-│  Multimodal         │  ADT: CLR normalization → PCA (9 PCs)
-│  Integration (WNN)  │  WNN graph: RNA dims 1:30, ADT dims 1:9
+│  Module 02          │
+│  Quality Control    │
 └────────┬────────────┘
-         │
+         ├─ Mitochondrial % calculation
+         ├─ Dynamic quantile thresholds (1st–99th)
+         └─ nFeature: 150–2700 | MT < 45%
+
          ▼
+
 ┌─────────────────────┐
-│  Module 04          │  Symphony reference mapping
-│  Reference Mapping  │  KNN label transfer (k=5)
-└────────┬────────────┘  Precursor detection (CD34+ / TCF7+ / MPO−)
-         │
+│  Module 03          │
+│  Multimodal         │
+│  Integration (WNN)  │
+└────────┬────────────┘
+         ├─ RNA: NormalizeData → PCA (50 PCs)
+         ├─ ADT: CLR normalization → PCA (9 PCs)
+         └─ WNN graph: RNA dims 1:30, ADT dims 1:9
+
          ▼
+
 ┌─────────────────────┐
-│  Module 05          │  AddModuleScore: T_prog, Stem_prog, Myeloid_prog
-│  Progenitor         │  Classify: Immature_T_like / Immature_T_MPAL_like
+│  Module 04          │
+│  Reference Mapping  │
+└────────┬────────────┘
+         ├─ Symphony reference mapping
+         ├─ KNN label transfer (k = 5)
+         └─ Precursor detection: CD34+ / TCF7+ / MPO−
+
+         ▼
+
+┌─────────────────────┐
+│  Module 05          │
+│  Progenitor         │
 │  Identification     │
 └────────┬────────────┘
-         │
+         ├─ AddModuleScore: T_prog
+         ├─ AddModuleScore: Stem_prog
+         ├─ AddModuleScore: Myeloid_prog
+         └─ Classify: Immature_T_like / Immature_T_MPAL_like
+
          ▼
+
 ┌─────────────────────┐
-│  Module 06          │  PCA (20 PCs) → FindNeighbors → FindClusters
-│  Clustering &       │  UMAP visualization
-│  Annotation         │  Stage labels: ETP / DN / DP / CLP
-└────────┬────────────┘  ADT validation + export
+│  Module 06          │
+│  Clustering &       │
+│  Annotation         │
+└────────┬────────────┘
+         ├─ PCA (20 PCs)
+         ├─ FindNeighbors → FindClusters
+         ├─ UMAP visualization
+         ├─ Stage labels: ETP / DN / DP / CLP
+         └─ ADT validation + export
 ```
 
 ---
 
 ## Directory Structure
 
-```
+```text
 r_analysis/
 ├── data/
-│   ├── CITE-Seq-Lane3_Seurat.rds          # Raw Seurat object
-│   └── CITE-Seq-Lane3_Sample_Tag_Calls.csv # Sample demultiplexing metadata
+│   ├── CITE-Seq-Lane3_Seurat.rds
+│   └── CITE-Seq-Lane3_Sample_Tag_Calls.csv
 │
 ├── scripts/
 │   ├── Module_01_data_loaded.R
 │   ├── Module_02_qc_filtered.R
 │   ├── Module_03_wnn_integrated.R
 │   ├── Module_04_reference_mapping.R
-│   ├── Module_05_Subsetting of T cell precursor.R
-│   └── Module_06_Clustering_Annotation.R
+│   ├── Module_05_progenitor_identification.R
+│   └── Module_06_clustering_annotation.R
 │
-├── Main_Pipeline_Target.R                 # Orchestration via {targets}
+├── Main_Pipeline_Target.R
 │
 ├── results/
 │   ├── 01_data_loaded.rds
