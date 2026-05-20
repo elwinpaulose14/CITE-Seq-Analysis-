@@ -13,7 +13,7 @@
 
 ## Overview
 
-This pipeline performs an end-to-end single-cell multimodal analysis of CITE-seq data from bone marrow samples, integrating simultaneous RNA and surface protein (ADT) expression. The primary goal is to identify **T-cell progenitors** and **T/Myeloid MPAL-like cells**, map them onto a bone marrow reference atlas, and resolve their developmental trajectory into ETP → DN → DP stages.
+This pipeline performs an end-to-end single-cell multimodal analysis of CITE-seq data from cryopreserved bone marrow samples, integrating simultaneous RNA and surface protein (ADT) expression. The primary goal is to identify **T-cell progenitors** and **T/Myeloid MPAL-like cells**, map , and resolve their developmental trajectory into ETP → DN → DP stages.
 
 ### Key Features
 
@@ -305,8 +305,8 @@ Scores each cell against three gene programs using `AddModuleScore`:
 | Myeloid progenitor | MPO, LYZ, CEBPA, CD33, KIT | > 0 |
 
 Cell classifications:
-- **Immature_T_like:** T_prog > 0.3 AND Stem_prog > 0.1
-- **Immature_T_MPAL_like:** T_prog > 0.4 AND Stem_prog > 0.2 AND Myeloid_prog > 0.1
+- **Tcell_prog:** T_prog > 0.3 AND Stem_prog > 0.1
+- **T_M_MPAL_like:** T_prog > 0.4 AND Stem_prog > 0.2 AND Myeloid_prog > 0.1
 
 **Output:** `05_immature_t_classified.rds`, `05_immature_t_classification.csv`
 
