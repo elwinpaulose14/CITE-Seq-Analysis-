@@ -260,9 +260,8 @@ Reads the raw Seurat RDS object and merges sample demultiplexing metadata from t
 
 Computes per-cell mitochondrial percentage and applies a multi-step filtering strategy:
 
-- Dynamic quantile filtering (1st–99th percentile on `nFeature_RNA`)
-- Hard thresholds: `nFeature_RNA` > 150 and < 2700; `percent.mt` < 45%
-- Removal of `Undetermined` and `Multiplet` sample tags
+- Quantile filtering (1st–99th percentile on `nFeature_RNA`)
+- Thresholds: `nFeature_RNA` > 150 and < 2700; `percent.mt` < 45%
 - Retention of `SampleTag11_hs` only
 
 **Output:** `02_qc_filtered.rds`, `01_qc_before_filtering.png`
