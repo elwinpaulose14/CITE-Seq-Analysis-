@@ -3,7 +3,8 @@
 ```text
 # CITE-Seq Analysis Pipeline
 
->Multimodal single-cell analysis of RNA and protein co-expression for T-cell progenitor identification and developmental staging in bone marrow
+>Multimodal single-cell analysis of RNA and protein co-expression for T-cell progenitor identification
+and developmental staging in bone marrow
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![R Version](https://img.shields.io/badge/R-%3E%3D4.2-blue.svg)](https://www.r-project.org/)
@@ -13,7 +14,10 @@
 
 ## Overview
 
-This pipeline performs an end-to-end single-cell multimodal analysis of CITE-seq data from cryopreserved bone marrow samples, integrating simultaneous RNA and surface protein (ADT) expression. The primary goal is to identify **T-cell progenitors** and **T/Myeloid MPAL-like cells**, map, and resolve their developmental trajectory into ETP → DN → DP stages.
+This pipeline performs an end-to-end single-cell multimodal analysis of CITE-seq data from cryopreserved
+bone marrow samples, integrating simultaneous RNA and surface protein (ADT) expression. The primary goal is to
+identify **T-cell progenitors** and **T/Myeloid MPAL-like cells**, map, and resolve their developmental
+trajectory into ETP → DN → DP stages.
 
 ### Key Features
 
